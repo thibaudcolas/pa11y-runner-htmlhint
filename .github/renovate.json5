@@ -38,8 +38,8 @@
       automerge: true,
     },
     {
-      depTypeList: ["dependencies"],
-      semanticCommitType: "fix",
+      packageNames: ["htmlhint"],
+      groupName: "htmlhint",
       automerge: false,
     },
   ],

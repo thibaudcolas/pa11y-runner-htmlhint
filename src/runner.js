@@ -1,4 +1,4 @@
-const { spawnSync } = require("child_process");
+const { HTMLHint } = require("htmlhint");
 
 const runner = {
   // Update this when an API-compatible Pa11y gets released.
@@ -11,40 +11,42 @@ const runner = {
 
 runner.processPage = async (page) => {
   const html = await page.content();
-  let messages = [];
+  let messages;
+
   try {
-    const { stderr } = spawnSync(
-      "vnu",
-      ["--exit-zero-always", "--format", "json", "-"],
-      {
-        input: html,
-        windowsHide: true,
-      },
-    );
-    const result = JSON.parse(stderr);
-    messages = result.messages;
+    messages = HTMLHint.verify(html, {
+      "tagname-lowercase": true,
+      "attr-lowercase": true,
+      "attr-value-double-quotes": true,
+      "doctype-first": true,
+      "tag-pair": true,
+      "spec-char-escape": true,
+      "id-unique": true,
+      "src-not-empty": true,
+      "attr-no-duplication": true,
+      "title-require": true,
+    });
   } catch (e) {
     return [];
   }
 
   const typeMap = {
     error: "error",
-    info: "notice",
   };
 
   return messages.map((message) => ({
-    // There are no error codes in the validator.
-    code: "html-validation",
+    code: message.rule.id,
     message: message.message,
     type: typeMap[message.type],
-    context: message.extract,
-    // There is no selector provided by the validator.
+    context: message.evidence,
+    // There is no selector provided by htmlhint.
     selector: "",
     runnerExtras: {
       // Not entirely sure how useful these are. To de-dupe issues perhaps?
-      // lastLine: message.lastLine,
-      // firstColumn: message.firstColumn,
-      // lastColumn: message.lastColumn,
+      // raw: message.raw,
+      // line: message.line,
+      // col: message.col,
+      link: message.rule.link,
     },
   }));
 };

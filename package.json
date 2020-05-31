@@ -1,25 +1,25 @@
 {
-  "name": "pa11y-runner-vnu",
+  "name": "pa11y-runner-htmlhint",
   "version": "0.1.0",
-  "description": "Pa11y runner for HTML validation with the Nu Html Checker (v.Nu)",
+  "description": "Pa11y runner for HTML linting with HTMLHint",
   "author": "Thibaud Colas",
   "license": "MIT",
   "main": "./src/runner.js",
-  "homepage": "https://github.com/thibaudcolas/pa11y-runner-vnu",
+  "homepage": "https://github.com/thibaudcolas/pa11y-runner-htmlhint",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thibaudcolas/pa11y-runner-vnu.git"
+    "url": "git+https://github.com/thibaudcolas/pa11y-runner-htmlhint.git"
   },
   "bugs": {
-    "url": "https://github.com/thibaudcolas/pa11y-runner-vnu/issues"
+    "url": "https://github.com/thibaudcolas/pa11y-runner-htmlhint/issues"
   },
   "keywords": [
     "pa11y",
     "pa11y-runner",
     "accessibility",
     "html validation",
-    "vnu",
-    "validator"
+    "htmlhint",
+    "analysis"
   ],
   "devDependencies": {
     "@commitlint/cli": "8.3.5",
@@ -36,5 +36,8 @@
     "format": "prettier --write '**/?(.)*.{md,css,scss,js,json,json5,yaml,yml,html}'",
     "test:ci": "npm run lint -s",
     "test": "pa11y --runner \"$(pwd)/src/runner.js\" https://www.example.com/"
+  },
+  "dependencies": {
+    "htmlhint": "^0.13.0"
   }
 }

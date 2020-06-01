@@ -5,6 +5,9 @@
   "author": "Thibaud Colas",
   "license": "MIT",
   "main": "./src/runner.js",
+  "files": [
+    "src"
+  ],
   "homepage": "https://github.com/thibaudcolas/pa11y-runner-htmlhint",
   "repository": {
     "type": "git",

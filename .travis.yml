@@ -10,6 +10,7 @@ script:
   - git log -1 --pretty=%B >> latest.log && ./.git/hooks/commit-msg latest.log
   - npm run test:ci
   - npx commitlint-travis
+  - npm pack --loglevel notice 2>&1 >/dev/null | sed -e 's/^npm notice //' && rm *.tgz
 branches:
   except:
     - gh-pages

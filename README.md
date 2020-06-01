@@ -27,7 +27,3 @@ See anything you like in here? Anything missing? We welcome all support, whether
 ## Credits
 
 View the full list of [contributors](https://github.com/thibaudcolas/pa11y-runner-htmlhint/graphs/contributors). [MIT](LICENSE) licensed.
-
-```
-
-```

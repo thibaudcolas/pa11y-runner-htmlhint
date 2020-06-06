@@ -45,6 +45,6 @@
     "test": "pa11y --runner \"$(pwd)/src/runner.js\" https://www.example.com/"
   },
   "dependencies": {
-    "htmlhint": "^0.13.0"
+    "htmlhint": "^0.14.0"
   }
 }

@@ -43,6 +43,11 @@
       automerge: true,
     },
     {
+      packagePatterns: ["^semantic-release", "^@semantic-release"],
+      groupName: "semantic-release",
+      automerge: true,
+    },
+    {
       packageNames: ["htmlhint"],
       groupName: "htmlhint",
       automerge: false,
